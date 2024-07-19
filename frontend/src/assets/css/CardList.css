@@ -1,4 +1,11 @@
 /* CardList */
 .Card_List                          { position: relative; list-style-type: none; display: inline-block; vertical-align: top; white-space: normal; height: 100%; width: 33%; padding: 0 20px; overflow: auto; }
 .Card_List:not(:last-child):after   { content: ''; position: absolute; top: 0; right: 0; width: 1px; height: 99%; background: linear-gradient(to bottom, #eee 0%, #ccc 50%, #eee 100%) fixed; }
-.Card_List h1                       { font-weight: 500; color: #3b414c; font-size: 20px; }
+.Card_List h1                       { font-family: "EF_jejudoldam", 맑은 고딕, 돋움, 굴림; font-weight: 500; color: #3b414c; font-size: 20px; margin-bottom: 10px; }
+
+@font-face {
+    font-family: 'EF_jejudoldam';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_jejudoldam.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

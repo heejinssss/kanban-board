@@ -9,7 +9,7 @@ function KanbanBoard() {
             <div className={Kanban_Board}>
                 <CardList
                     key={'ToDo'}
-                    title={'To Do'}
+                    title={'ToDo'}
                     cards={cards.filter((card) => card.status === 'ToDo')}
                     status={'ToDo'}
                 />

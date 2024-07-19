@@ -1,5 +1,12 @@
 /* Card */
-._Card                  { position: relative; z-index: 1; background: #fff; width: 100%; padding: 10px 10px 10px 15px; margin: 0 0 10px 0; overflow: auto; border: 1px solid #e5e5df; border-radius: 3px; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
+._Card                  { font-family: "EF_YOONY", 맑은 고딕, 돋움, 굴림; position: relative; z-index: 1; background: #fff; width: 100%; padding: 10px 10px 10px 15px; margin: 0 0 10px 0; overflow: auto; border: 1px solid #e5e5df; border-radius: 10px; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); }
 .Card_Title             { font-weight: bold; border-bottom: solid 5px transparent; }
-.Card_Title:before      { display: inline-block; width: 1em; content: '▸'; }
-.Card_Title_Open:before { content: '▾'; }
+.Card_Title:before      { display: inline-block; width: 2em; content: '📁'; }
+.Card_Title_Open:before { content: '📂'; }
+
+@font-face {
+    font-family: 'EF_YOONY';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/EF_YOONY.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
