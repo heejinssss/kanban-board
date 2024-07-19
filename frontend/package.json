@@ -1,7 +1,7 @@
 {
-  "name": "emaillist08",
+  "name": "kanbanboard",
   "version": "1.0.0",
-  "description": "Emaillist React Component",
+  "description": "kanbanboard React Component",
   "main": "index.js",
   "scripts": {
     "start": "npx webpack serve --config config/webpack.config.js --progress --mode development",
