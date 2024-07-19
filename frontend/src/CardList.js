@@ -1,18 +1,20 @@
 import React from 'react';
 import { Card_List } from './assets/css/CardList.css';
-import Card from './Card.js';
+import Card from './Card';
 
-function CardList({ title, cards }) {
+function CardList({ cards, status }) {
     return (
         <div className={Card_List}>
-            <h1>{title}</h1>
+            <h1>{status}</h1>
             {
-                cards.map((card, index) =>
-                    <Card key={index}
-                          no={card.no}
-                          title={card.title}
-                          description={card.description}/>
-                        )
+                cards.map((e) =>
+                    <Card
+                        key={e.no}
+                        no={e.no}
+                        title={e.title}
+                        description={e.description}
+                        tasks={e.tasks} 
+                    />)
             }
         </div>
     );

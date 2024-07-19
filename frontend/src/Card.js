@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { _Card } from './assets/css/Card.css';
-import TaskList from './TaskList.js';
+import TaskList from './TaskList';
 
 function Card({ no, title, description, tasks }) {
     const [showDetail, setShowDetail] = useState(false);
@@ -12,11 +12,9 @@ function Card({ no, title, description, tasks }) {
                 className={`Card_Title ${showDetail ? 'Card_Title_Open' : ''}`}
                 onClick={() => {setShowDetail(!showDetail);}}
             >
-                {title}
+            {title}
             </div>
-            <div>
-                {description}
-            </div>
+            <div>{description}</div>
             {showDetail && <TaskList tasks={tasks} />}
         </div>
     );
