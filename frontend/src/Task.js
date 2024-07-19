@@ -11,7 +11,7 @@ function Task({ no, name, done }) {
                 checked={check}
                 onChange={() => setCheck(!check)}
             />
-            {name}
+            &nbsp;&nbsp;{name}
             <a href="#" className={Task_Remove} />
         </li>
     );
