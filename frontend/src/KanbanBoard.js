@@ -8,14 +8,15 @@ function KanbanBoard() {
 
     useEffect(() => {
         fetchCards();
-    }, []);
+    }, [setCards]);
 
+    /* [S] fetchCards API */
     const fetchCards = async () => {
         try {
             const response = await fetch('/api/card', {
                 method: 'GET',
                 headers: {
-                    'Accept': 'application/json',
+                    Accept: 'application/json',
                     'Content-Type': 'application/json',
                 },
                 body: null,
@@ -36,37 +37,7 @@ function KanbanBoard() {
             console.error(err);
         }
     };
-
-    // const fetchTasks = async (cardNo, taskName) => {
-    //     try {
-    //         const response = await fetch('/api/addTask', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 name: taskName,
-    //                 done: 'false',
-    //                 card_no: cardNo,
-    //             }),
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error(`HTTP Error: ${response.status}`);
-    //         }
-
-    //         const json = await response.json();
-
-    //         if (json.result !== 'success') {
-    //             throw new Error(`API request Error ${json.message}`);
-    //         } else {
-    //             fetchCards();
-    //         }
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
+    /* [E] fetchCards API */
 
     return (
         cards && (
