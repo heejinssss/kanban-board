@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Input_Add_Task, Task_List } from './assets/css/TaskList.css';
 import Task from './Task';
 
-function TaskList({ tasks }) {
+function TaskList({ no, tasks, addTask }) {
+    const inputValue = useRef(null);
+
     return (
         <div className={Task_List}>
             <ul>
@@ -15,7 +17,17 @@ function TaskList({ tasks }) {
                             done={e.done}
                         />))}
             </ul>
-            <input className={Input_Add_Task} type="text" placeholder={'태스크 추가'} />
+            <input
+                className={Input_Add_Task}
+                type="text"
+                placeholder={'태스크 추가'}
+                ref={inputValue}
+                onKeyDown={(e) => {
+                    if (e.key==="Enter") {
+                        addTask({name: e.target.value, card_no: no});
+                        inputValue.current.value = null
+                    }}}
+            />
         </div>
     );
 }

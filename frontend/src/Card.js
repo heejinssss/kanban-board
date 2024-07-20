@@ -13,7 +13,14 @@ function Card({ no, title, description }) {
     /* [S] fetchTasks API */
     const fetchTasks = async () => {
         try {
-            const response = await fetch(`/api/task/${no}`);
+            const response = await fetch(`/api/task/${no}`, {
+                method: 'get',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: null
+            });
 
             if (!response.ok) {
                 throw new Error(`HTTP Error: ${response.status}`);
@@ -32,6 +39,34 @@ function Card({ no, title, description }) {
     };
     /* [E] fetchTasks API */
 
+    /* [S] addTask API */
+    const addTask = async (task) => {
+        try{
+            const response = await fetch('/api/addTask' , {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(task)
+            });
+
+            if(!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            if(json.result !== 'success'){
+                throw new Error(`API request Error ${json.message}`);
+            }
+            setTasks([json.data, ...tasks]);
+        } catch(err) {
+            console.error(err);
+        }
+    }
+    /* [E] addTask API */
+
     return (
         <div className={_Card}>
             <div
@@ -44,7 +79,7 @@ function Card({ no, title, description }) {
                 {title}
             </div>
             <div>{description}</div>
-            {showContent && <TaskList tasks={tasks} />}
+            {showContent && <TaskList no={no} tasks={tasks} addTask={addTask} />}
         </div>
     );
 }
