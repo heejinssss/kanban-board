@@ -7,3 +7,17 @@ body        { background: #fee1e8; }
 
 /* KanbanBoard */
 .Kanban_Board  { white-space: nowrap; height:100%; margin: 20px auto; font-family: "맑은 고딕", 돋움, 굴림; }
+
+p {
+    font-family: "SDSamliphopangche_Outline", 맑은 고딕;
+    text-align: center;
+    margin-top: 20px;
+    font-size:50px;
+}
+
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

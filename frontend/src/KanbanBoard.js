@@ -40,13 +40,16 @@ function KanbanBoard() {
     /* [E] fetchCards API */
 
     return (
-        cards && (
-            <div className={Kanban_Board}>
-                <CardList key={'ToDo'} title={'ToDo'} cards={cards.filter((card) => card.status === 'ToDo')} status={'ToDo'} />
-                <CardList key={'Doing'} title={'Doing'} cards={cards.filter((card) => card.status === 'Doing')} status={'Doing'} />
-                <CardList key={'Done'} title={'Done'} cards={cards.filter((card) => card.status === 'Done')} status={'Done'} />
-            </div>
-        )
+            cards && (
+                <>
+                    <p>My KanbanBoard</p>
+                    <div className={Kanban_Board}>
+                        <CardList key={'ToDo'} title={'ToDo'} cards={cards.filter((card) => card.status === 'ToDo')} status={'ToDo'} />
+                        <CardList key={'Doing'} title={'Doing'} cards={cards.filter((card) => card.status === 'Doing')} status={'Doing'} />
+                        <CardList key={'Done'} title={'Done'} cards={cards.filter((card) => card.status === 'Done')} status={'Done'} />
+                    </div>
+                </>
+            )
     );
 }
 

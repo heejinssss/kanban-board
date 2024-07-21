@@ -17,9 +17,9 @@ function Card({ no, title, description }) {
                 method: 'get',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: null
+                body: null,
             });
 
             if (!response.ok) {
@@ -41,31 +41,88 @@ function Card({ no, title, description }) {
 
     /* [S] addTask API */
     const addTask = async (task) => {
-        try{
-            const response = await fetch('/api/addTask' , {
+        try {
+            const response = await fetch('/api/addTask', {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(task)
+                body: JSON.stringify(task),
             });
 
-            if(!response.ok) {
+            if (!response.ok) {
                 throw new Error(`HTTP Error: ${response.status}`);
             }
 
             const json = await response.json();
 
-            if(json.result !== 'success'){
+            if (json.result !== 'success') {
                 throw new Error(`API request Error ${json.message}`);
             }
             setTasks([json.data, ...tasks]);
-        } catch(err) {
+        } catch (err) {
             console.error(err);
         }
-    }
+    };
     /* [E] addTask API */
+
+    /* [S] updateTask API */
+    const updateTask = async (task) => {
+        try {
+            const response = await fetch(`/api/task/${task.no}`, {
+                method: 'put',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(task),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            if (json.result !== 'success') {
+                throw new Error(`API request Error ${json.message}`);
+            }
+            setTasks((prevTasks) => prevTasks.map((e) => (e.no === json.data.no ? json.data : e)));
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    /* [E] updateTask API */
+
+    /* [S] deleteTask API */
+    const deleteTask = async (no) => {
+        try {
+            const response = await fetch(`/api/task/${no}`, {
+                method: 'delete',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: null,
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            if (json.result !== 'success') {
+                throw new Error(json.message);
+            }
+
+            setTasks(tasks.filter((e) => e.no !== no));
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    /* [E] deleteTask API */
 
     return (
         <div className={_Card}>
@@ -79,7 +136,12 @@ function Card({ no, title, description }) {
                 {title}
             </div>
             <div>{description}</div>
-            {showContent && <TaskList no={no} tasks={tasks} addTask={addTask} />}
+            {showContent && <TaskList
+                                no={no}
+                                tasks={tasks}
+                                addTask={addTask}
+                                updateTask={updateTask}
+                                deleteTask={deleteTask} />}
         </div>
     );
 }

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Input_Add_Task, Task_List } from './assets/css/TaskList.css';
 import Task from './Task';
 
-function TaskList({ no, tasks, addTask }) {
+function    TaskList({ no, tasks, addTask, updateTask, deleteTask }) {
     const inputValue = useRef(null);
 
     return (
@@ -15,6 +15,8 @@ function TaskList({ no, tasks, addTask }) {
                             no={e.no}
                             name={e.name}
                             done={e.done}
+                            updateTask={updateTask}
+                            deleteTask={deleteTask}
                         />))}
             </ul>
             <input
